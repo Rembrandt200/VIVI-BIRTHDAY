@@ -45,20 +45,21 @@ body::before{
     width:100%;
     height:100vh;
     position:relative;
+    overflow:hidden;
 }
 
 .screen{
     width:100%;
     height:100vh;
+    position:absolute;
+    top:0;
+    left:0;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:20px;
-    position:absolute;
-    top:0;
-    left:0;
     transition:transform 0.8s ease;
 }
 
@@ -69,11 +70,11 @@ body::before{
 #screen2{
     transform:translateY(100%);
     overflow-y:auto;
+    justify-content:flex-start;
     padding-top:80px;
     padding-bottom:60px;
 }
 
-/* When active */
 .move-up{
     transform:translateY(-100%);
 }
@@ -155,6 +156,7 @@ button:hover{
 
 .meme-section{
     margin-top:70px;
+    width:100%;
 }
 
 .memes{
@@ -162,6 +164,7 @@ button:hover{
     flex-wrap:wrap;
     justify-content:center;
     gap:20px;
+    margin-top:20px;
 }
 
 .memes img{
@@ -174,6 +177,8 @@ footer{
     margin-top:60px;
     font-size:13px;
     opacity:0.6;
+    text-align:center;
+    padding-bottom:30px;
 }
 
 @media (max-width:768px){
@@ -208,49 +213,49 @@ footer{
 
     <h1>.✦ ݁˖ Happy Birthday Vivi ❤︎</h1>
     <p class="subtitle">For someone who fckng annoys me each day till i die.</p>
-
     <img src="vivi1.jpg" class="opening-image">
-
-    <br>
     <button onclick="unlockNote()">Click this my love ⬩➤</button>
 
-    </div>
+</div>
 
 <div class="screen" id="screen2">
 
-            <img src="vivi2.jpg" class="side-image">
+    <div class="note-wrapper">
 
-            <div class="note-text">
+        <img src="vivi2.jpg" class="side-image">
 
-                <h2>Read this well my darling Vivi ❤︎</h2>
+        <div class="note-text">
 
-                <p>Happy birthday, my love. I’m really glad you opened this because today is about you. It’s crazy how many days have passed and how the city keeps moving, how people come and go, how everything keeps changing so fast, yet you still feel like you. Time keeps adding numbers to your age, but the heart I met, the soul I care about, is still the same beautiful one. Even when I was away, you kept growing and reaching new heights quietly, and I’m honestly so proud of you for that.</p>
+            <h2>Read this well my darling Vivi ❤︎</h2>
 
-                <p>This year and the one before it, we’ve felt everything. Happiness, sadness, even moments of anger, but through all of it I’m grateful that I got to meet you and be part of your life. Days that once felt heavy and lonely feel lighter when you’re here. Now you’re growing even more, and I hope you stay strong and resilient, especially on the days that feel the darkest. Even when it’s hard and you feel tired, I believe in the light inside you, the kind that can shine through any shadow.</p>
+            <p>Happy birthday, my love. I’m really glad you opened this because today is about you. It’s crazy how many days have passed and how the city keeps moving, how people come and go, how everything keeps changing so fast, yet you still feel like you. Time keeps adding numbers to your age, but the heart I met, the soul I care about, is still the same beautiful one. Even when I was away, you kept growing and reaching new heights quietly, and I’m honestly so proud of you for that.</p>
 
-                <p>I know you still struggle sometimes. I know things don’t automatically become easy just because I’m here. But please remember that you are not alone anymore. I am here. I choose to stay. Through the good days, the messy days, and the quiet ones too. Always, okay?</p>
+            <p>This year and the one before it, we’ve felt everything. Happiness, sadness, even moments of anger, but through all of it I’m grateful that I got to meet you and be part of your life. Days that once felt heavy and lonely feel lighter when you’re here. Now you’re growing even more, and I hope you stay strong and resilient, especially on the days that feel the darkest. Even when it’s hard and you feel tired, I believe in the light inside you, the kind that can shine through any shadow.</p>
 
-                <p>People may fade and moments may pass, but memories stay. So let’s create memories worth remembering, the kind that stay carved in our hearts no matter where life takes us.</p>
+            <p>I know you still struggle sometimes. I know things don’t automatically become easy just because I’m here. But please remember that you are not alone anymore. I am here. I choose to stay. Through the good days, the messy days, and the quiet ones too. Always, okay?</p>
 
-                <p><strong>Happy birthday, my love.</strong> May God guide you through every hardship, lift you up when you feel low, and bless you with peace, strength, and happiness today and always. I love you so much, Vivi.❤︎</p>
+            <p>People may fade and moments may pass, but memories stay. So let’s create memories worth remembering, the kind that stay carved in our hearts no matter where life takes us.</p>
 
-            </div>
+            <p><strong>Happy birthday, my love.</strong> May God guide you through every hardship, lift you up when you feel low, and bless you with peace, strength, and happiness today and always. I love you so much, Vivi.❤︎</p>
+
         </div>
 
-        <div class="meme-section">
-            <h2>Mga mukha mong fav ko❤︎</h2>
-            <div class="memes">
-                <img src="meme1.jpg">
-                <img src="meme2.jpg">
-                <img src="meme3.jpg">
-            </div>
-        </div>
+    </div>
 
+    <div class="meme-section">
+        <h2>Mga mukha mong fav ko❤︎</h2>
+        <div class="memes">
+            <img src="meme1.jpg">
+            <img src="meme2.jpg">
+            <img src="meme3.jpg">
+        </div>
     </div>
 
     <footer>
         Not much effort but.. ik youd like it so yeah mwuehehehe, iloveyousomuchmybeautifultannedchinitabaddiedommymommypeggingdevicecutieprettiestmostbeautifulbossywifeyvivi ❤︎
     </footer>
+
+</div>
 
 </div>
 
@@ -264,11 +269,5 @@ function unlockNote(){
 }
 </script>
 
-    </div>
-    
 </body>
-
 </html>
-
-
-
