@@ -15,15 +15,12 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
+html,body{
+    height:100%;
     font-family:'Poppins', sans-serif;
     background: linear-gradient(135deg,#1a001f,#3b0066,#6a0dad);
     color:white;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 body::before{
@@ -44,32 +41,64 @@ body::before{
     to{ transform:translateY(120vh);}
 }
 
-.container{
-    padding:60px 20px;
-    max-width:1100px;
-    margin:auto;
+.main-wrapper{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+.screen{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    padding:20px;
+    position:absolute;
+    top:0;
+    left:0;
+    transition:transform 0.8s ease;
+}
+
+#screen1{
+    transform:translateY(0);
+}
+
+#screen2{
+    transform:translateY(100%);
+    overflow-y:auto;
+    padding-top:80px;
+    padding-bottom:60px;
+}
+
+/* When active */
+.move-up{
+    transform:translateY(-100%);
+}
+
+.move-into-view{
+    transform:translateY(0);
 }
 
 h1{
     font-family:'Playfair Display', serif;
     font-size:38px;
     margin-bottom:10px;
-    letter-spacing:1px;
 }
 
 .subtitle{
     opacity:0.8;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .opening-image{
     width:100%;
     max-width:300px;
     border-radius:25px;
-    margin-top:20px;
     box-shadow:0 0 40px rgba(168,85,247,0.6);
-    transition:0.4s ease;
+    transition:0.4s;
 }
 
 .opening-image:hover{
@@ -77,7 +106,7 @@ h1{
 }
 
 button{
-    margin-top:30px;
+    margin-top:25px;
     padding:15px 35px;
     border:none;
     border-radius:50px;
@@ -85,36 +114,11 @@ button{
     background:linear-gradient(90deg,#a855f7,#ec4899);
     color:white;
     cursor:pointer;
-    transition:0.3s ease;
-    box-shadow:0 0 20px rgba(236,72,153,0.6);
+    transition:0.3s;
 }
 
 button:hover{
     transform:scale(1.08);
-    box-shadow:0 0 30px rgba(236,72,153,0.9);
-}
-
-.final-section{
-    display:none;
-    opacity:0;
-    margin-top:100px; 
-    padding-top:60px;
-    border-top:1px solid rgba(255,255,255,0.08);
-}
-
-.fade-in{
-    animation:fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
 }
 
 .note-wrapper{
@@ -123,24 +127,18 @@ button:hover{
     gap:40px;
     align-items:center;
     justify-content:center;
-    margin-top:30px;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(15px);
     border-radius:30px;
     padding:40px;
-    box-shadow:0 0 50px rgba(168,85,247,0.3);
+    max-width:1000px;
+    margin:auto;
 }
 
 .side-image{
     width:100%;
     max-width:260px;
     border-radius:25px;
-    box-shadow:0 0 30px rgba(168,85,247,0.6);
-    transition:0.4s;
-}
-
-.side-image:hover{
-    transform:scale(1.05);
 }
 
 .note-text{
@@ -156,12 +154,7 @@ button:hover{
 }
 
 .meme-section{
-    margin-top:80px;
-}
-
-.meme-section h2{
-    font-family:'Playfair Display', serif;
-    margin-bottom:20px;
+    margin-top:70px;
 }
 
 .memes{
@@ -175,28 +168,18 @@ button:hover{
     width:100%;
     max-width:200px;
     border-radius:20px;
-    box-shadow:0 0 20px rgba(0,0,0,0.5);
-    transition:0.3s;
-}
-
-.memes img:hover{
-    transform:scale(1.08);
 }
 
 footer{
-    margin-top:100px;
-    padding:20px;
+    margin-top:60px;
     font-size:13px;
     opacity:0.6;
 }
+
 @media (max-width:768px){
 
     h1{
-        font-size:28px;
-    }
-
-    .container{
-        padding:40px 15px;
+        font-size:26px;
     }
 
     .note-wrapper{
@@ -212,11 +195,6 @@ footer{
         text-align:justify;
     }
 
-    button{
-        width:100%;
-        max-width:280px;
-    }
-
 }
 
 </style>
@@ -224,7 +202,9 @@ footer{
 
 <body>
 
-<div class="container">
+<div class="main-wrapper">
+
+<div class="screen" id="screen1">
 
     <h1>.✦ ݁˖ Happy Birthday Vivi ❤︎</h1>
     <p class="subtitle">For someone who fckng annoys me each day till i die.</p>
@@ -234,9 +214,9 @@ footer{
     <br>
     <button onclick="unlockNote()">Click this my love ⬩➤</button>
 
-    <div class="final-section" id="finalSection">
+    </div>
 
-        <div class="note-wrapper">
+<div class="screen" id="screen2">
 
             <img src="vivi2.jpg" class="side-image">
 
@@ -276,18 +256,19 @@ footer{
 
 <script>
 function unlockNote(){
-    const section = document.getElementById("finalSection");
-    section.style.display = "block";
+    const screen1 = document.getElementById("screen1");
+    const screen2 = document.getElementById("screen2");
 
-    setTimeout(() => {
-        section.classList.add("fade-in");
-        section.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    screen1.classList.add("move-up");
+    screen2.classList.add("move-into-view");
 }
 </script>
 
+    </div>
+    
 </body>
 
 </html>
+
 
 
