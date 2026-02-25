@@ -15,12 +15,15 @@
     box-sizing:border-box;
 }
 
-html,body{
-    height:100%;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
     font-family:'Poppins', sans-serif;
     background: linear-gradient(135deg,#1a001f,#3b0066,#6a0dad);
     color:white;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 body::before{
@@ -41,46 +44,14 @@ body::before{
     to{ transform:translateY(120vh);}
 }
 
-.main-wrapper{
-    width:100%;
-    height:100vh;
-    position:relative;
-    overflow:hidden;
-}
-
-.screen{
-    width:100%;
-    height:100vh;
-    position:absolute;
-    top:0;
-    left:0;
+section{
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    padding:40px 20px;
     text-align:center;
-    padding:20px;
-    transition:transform 0.8s ease;
-}
-
-#screen1{
-    transform:translateY(0);
-}
-
-#screen2{
-    transform:translateY(100%);
-    overflow-y:auto;
-    justify-content:flex-start;
-    padding-top:80px;
-    padding-bottom:60px;
-}
-
-.move-up{
-    transform:translateY(-100%);
-}
-
-.move-into-view{
-    transform:translateY(0);
 }
 
 h1{
@@ -178,7 +149,6 @@ footer{
     font-size:13px;
     opacity:0.6;
     text-align:center;
-    padding-bottom:30px;
 }
 
 @media (max-width:768px){
@@ -207,25 +177,19 @@ footer{
 
 <body>
 
-<div class="main-wrapper">
-
-<div class="screen" id="screen1">
-
+<section id="screen1">
     <h1>.✦ ݁˖ Happy Birthday Vivi ❤︎</h1>
     <p class="subtitle">For someone who fckng annoys me each day till i die.</p>
     <img src="vivi1.jpg" class="opening-image">
-    <button onclick="unlockNote()">Click this my love ⬩➤</button>
+    <button onclick="goNext()">Click this my love ⬩➤</button>
+</section>
 
-</div>
-
-<div class="screen" id="screen2">
+<section id="screen2">
 
     <div class="note-wrapper">
-
         <img src="vivi2.jpg" class="side-image">
 
         <div class="note-text">
-
             <h2>Read this well my darling Vivi ❤︎</h2>
 
             <p>Happy birthday, my love. I’m really glad you opened this because today is about you. It’s crazy how many days have passed and how the city keeps moving, how people come and go, how everything keeps changing so fast, yet you still feel like you. Time keeps adding numbers to your age, but the heart I met, the soul I care about, is still the same beautiful one. Even when I was away, you kept growing and reaching new heights quietly, and I’m honestly so proud of you for that.</p>
@@ -237,9 +201,7 @@ footer{
             <p>People may fade and moments may pass, but memories stay. So let’s create memories worth remembering, the kind that stay carved in our hearts no matter where life takes us.</p>
 
             <p><strong>Happy birthday, my love.</strong> May God guide you through every hardship, lift you up when you feel low, and bless you with peace, strength, and happiness today and always. I love you so much, Vivi.❤︎</p>
-
         </div>
-
     </div>
 
     <div class="meme-section">
@@ -255,17 +217,11 @@ footer{
         Not much effort but.. ik youd like it so yeah mwuehehehe, iloveyousomuchmybeautifultannedchinitabaddiedommymommypeggingdevicecutieprettiestmostbeautifulbossywifeyvivi ❤︎
     </footer>
 
-</div>
-
-</div>
+</section>
 
 <script>
-function unlockNote(){
-    const screen1 = document.getElementById("screen1");
-    const screen2 = document.getElementById("screen2");
-
-    screen1.classList.add("move-up");
-    screen2.classList.add("move-into-view");
+function goNext(){
+    document.getElementById("screen2").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
