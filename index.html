@@ -15,6 +15,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Poppins', sans-serif;
     background: linear-gradient(135deg,#1a001f,#3b0066,#6a0dad);
@@ -32,6 +36,7 @@ body::before{
     opacity:0.05;
     animation: floatHearts 20s linear infinite;
     white-space:nowrap;
+    pointer-events:none;
 }
 
 @keyframes floatHearts{
@@ -40,7 +45,7 @@ body::before{
 }
 
 .container{
-    padding:40px 20px;
+    padding:60px 20px;
     max-width:1100px;
     margin:auto;
     text-align:center;
@@ -59,7 +64,8 @@ h1{
 }
 
 .opening-image{
-    width:300px;
+    width:100%;
+    max-width:300px;
     border-radius:25px;
     margin-top:20px;
     box-shadow:0 0 40px rgba(168,85,247,0.6);
@@ -91,23 +97,23 @@ button:hover{
 .final-section{
     display:none;
     opacity:0;
-    margin-top:60px;
+    margin-top:100px; 
+    padding-top:60px;
+    border-top:1px solid rgba(255,255,255,0.08);
 }
 
 .fade-in{
-    animation:fadeIn 2s ease forwards;
+    animation:fadeIn 1.5s ease forwards;
 }
 
 @keyframes fadeIn{
     from{
         opacity:0;
-        transform:translateY(30px);
-        filter:blur(10px);
+        transform:translateY(40px);
     }
     to{
         opacity:1;
         transform:translateY(0);
-        filter:blur(0);
     }
 }
 
@@ -126,7 +132,8 @@ button:hover{
 }
 
 .side-image{
-    width:260px;
+    width:100%;
+    max-width:260px;
     border-radius:25px;
     box-shadow:0 0 30px rgba(168,85,247,0.6);
     transition:0.4s;
@@ -149,7 +156,7 @@ button:hover{
 }
 
 .meme-section{
-    margin-top:70px;
+    margin-top:80px;
 }
 
 .meme-section h2{
@@ -165,7 +172,8 @@ button:hover{
 }
 
 .memes img{
-    width:200px;
+    width:100%;
+    max-width:200px;
     border-radius:20px;
     box-shadow:0 0 20px rgba(0,0,0,0.5);
     transition:0.3s;
@@ -176,10 +184,39 @@ button:hover{
 }
 
 footer{
-    margin-top:80px;
+    margin-top:100px;
     padding:20px;
     font-size:13px;
     opacity:0.6;
+}
+@media (max-width:768px){
+
+    h1{
+        font-size:28px;
+    }
+
+    .container{
+        padding:40px 15px;
+    }
+
+    .note-wrapper{
+        flex-direction:column;
+        padding:25px;
+    }
+
+    .note-text{
+        text-align:center;
+    }
+
+    .note-text p{
+        text-align:justify;
+    }
+
+    button{
+        width:100%;
+        max-width:280px;
+    }
+
 }
 
 </style>
@@ -239,11 +276,16 @@ footer{
 
 <script>
 function unlockNote(){
-    const section=document.getElementById("finalSection");
-    section.style.display="block";
-    section.classList.add("fade-in");
+    const section = document.getElementById("finalSection");
+    section.style.display = "block";
+
+    setTimeout(() => {
+        section.classList.add("fade-in");
+        section.scrollIntoView({ behavior: "smooth" });
+    }, 100);
 }
 </script>
 
 </body>
+
 </html>
